@@ -7,7 +7,7 @@ const Quadtree = require( './Quadtree' )
 /* Config */
 
 const settings = {
-  dimensions: [ 1024, 1024 ]
+  dimensions: [ 10000, 10000 ]
 }
 
 /* Toolbox */
