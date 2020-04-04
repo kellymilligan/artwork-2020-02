@@ -1,5 +1,5 @@
-# Artwork Template
-GitHub template for creating artwork using [canvas-sketch](https://github.com/mattdesl/canvas-sketch).
+# Artwork 2020 02
+Playing around with Quadtree implementations to improve point packing rendering times
 
 ---
 
