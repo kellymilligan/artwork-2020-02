@@ -30,7 +30,7 @@ const drawCircle = ( ctx, x = 0, y = 0, r = 1 ) => {
 const sketch = () => {
   return ( { context, width, height } ) => {
 
-    const qtree = Quadtree( Rectangle( 0, 0, width, height ), 4 )
+    const qtree = Quadtree( Rectangle( 0, 0, width, height ), 10 )
 
     context.fillStyle = 'white'
     context.fillRect( 0, 0, width, height )
@@ -39,9 +39,9 @@ const sketch = () => {
 
     /* --- */
 
-    const COUNT = 100
-    const RADIUS = width * 0.02
-    const MAX_ATTEMPTS = 1000
+    const COUNT = 5000
+    const RADIUS = width * 0.005
+    const MAX_ATTEMPTS = 10000
 
     let currentCount = 1
     let failedAttempts = 0
@@ -81,12 +81,12 @@ const sketch = () => {
       } */
 
       const newPoint = Vector( width * 0.1 + 0.8 * width * Math.random(), height * 0.1 + 0.8 * height * Math.random() )
-
       const queryRange = Rectangle( newPoint.x - RADIUS * 2, newPoint.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
-      context.save()
-      context.strokeStyle = 'red'
-      context.strokeRect( queryRange.x, queryRange.y, queryRange.width, queryRange.height )
-      context.restore()
+
+      // context.save()
+      // context.strokeStyle = 'red'
+      // context.strokeRect( queryRange.x, queryRange.y, queryRange.width, queryRange.height )
+      // context.restore()
 
       const collisions = qtree.query( queryRange )
 
@@ -96,10 +96,11 @@ const sketch = () => {
       else {
         qtree.insert( newPoint )
         currentCount += 1
-        context.save()
-        context.strokeStyle = '#0f0'
-        context.strokeRect( queryRange.x, queryRange.y, queryRange.width, queryRange.height )
-        context.restore()
+
+        // context.save()
+        // context.strokeStyle = '#0f0'
+        // context.strokeRect( queryRange.x, queryRange.y, queryRange.width, queryRange.height )
+        // context.restore()
       }
 
       if ( failedAttempts >= MAX_ATTEMPTS ) {
