@@ -39,9 +39,9 @@ const sketch = () => {
 
     /* --- */
 
-    const COUNT = 5000
-    const RADIUS = width * 0.005
-    const MAX_ATTEMPTS = 10000
+    const COUNT = 10000
+    const RADIUS = width * 0.003
+    const MAX_ATTEMPTS = 100000
 
     let currentCount = 1
     let failedAttempts = 0
@@ -122,7 +122,7 @@ const sketch = () => {
       context.restore()
     }
 
-    qtree.visualize( context )
+    // qtree.visualize( context )
 
     // const area = Rectangle( width * 0.15, width * 0.15, width * 0.3, width * 0.3 )
 
