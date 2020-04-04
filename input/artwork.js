@@ -7,7 +7,7 @@ const Quadtree = require( './Quadtree' )
 /* Config */
 
 const settings = {
-  dimensions: [ 10000, 10000 ]
+  dimensions: [ 2048, 2048 ]
 }
 
 /* Toolbox */
@@ -35,12 +35,10 @@ const sketch = () => {
     context.fillStyle = 'white'
     context.fillRect( 0, 0, width, height )
 
-    // context.translate( width / 2, height / 2 ) // Move origin to center of canvas
-
     /* --- */
 
-    const COUNT = 200000
-    const RADIUS = width * 0.0005
+    const COUNT = 30000
+    const RADIUS = width * 0.0015
     const MAX_ATTEMPTS = COUNT
 
     let currentCount = 1
@@ -49,36 +47,6 @@ const sketch = () => {
     qtree.insert( Vector( width / 2, height / 2 ) )
 
     do {
-
-      /* const stem = qtree.getRandomPoint()
-      // const points = qtree.query( Rectangle( 0, 0, width, height ) )
-      // const stem = points[ points.length - 1 ]
-      // const stem = points[ Math.floor( points.length * 0.5 + 0.5 * Math.random() * points.length ) ]
-      // const stem = Math.random() > 0.9 ? points[ points.length - 1 ] : qtree.getRandomPoint()
-      const theta = ( Math.random() * 2 - 1 ) * Math.PI * 2
-      const branch = pointOnCircle( theta, stem.x, stem.y, RADIUS * 2 )
-
-      if ( !Rectangle( 0, 0, width, height ).contains( branch ) ) {
-        failedAttempts += 1
-      }
-      else {
-        // const queryRange = Rectangle( branch.x - RADIUS * 2, branch.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
-        // context.strokeStyle = 'red'
-        // context.strokeRect( queryRange.x, queryRange.y, queryRange.width, queryRange.height )
-        const collisions = qtree.query( Rectangle( branch.x - RADIUS, branch.y - RADIUS, RADIUS * 2, RADIUS * 2 ) )
-        // console.log( collisions.length )
-        if ( collisions.length ) {
-          // failedAttempts += 1
-        } else {
-          qtree.insert( branch )
-          currentCount += 1
-        }
-      }
-
-      if ( failedAttempts >= MAX_ATTEMPTS ) {
-        console.log( 'Too many failed attempts.' )
-        break
-      } */
 
       const newPoint = Vector( width * 0.1 + 0.8 * width * Math.random(), height * 0.1 + 0.8 * height * Math.random() )
       const queryRange = Rectangle( newPoint.x - RADIUS * 2, newPoint.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
