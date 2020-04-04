@@ -68,6 +68,11 @@ const Quadtree = ( bounds, capacity = 10 ) => ({
       this.se.visualize( ctx )
     }
     ctx.restore()
+  },
+  getRandomPoint() {
+
+    const points = this.query( this.bounds, [] )
+    return points[ Math.floor( Math.random() * points.length ) ]
   }
 })
 

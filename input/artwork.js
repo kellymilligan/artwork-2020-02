@@ -32,10 +32,19 @@ const sketch = () => {
 
     /* --- */
 
+    const COUNT = 1000
+    let currentCount = 0
 
     for ( let i = 0; i < 500; i++ ) {
       qtree.insert( Vector( Math.random() * width, Math.random() * height ) )
     }
+
+    // do {
+
+
+
+    //   currentCount += 1
+    // } while ( currentCount < COUNT )
 
     qtree.visualize( context )
 
@@ -49,6 +58,9 @@ const sketch = () => {
       context.fillStyle = '#0ff'
       context.fillRect( point.x - 3, point.y - 3, 6, 6 )
     }
+    const randomPoint = qtree.getRandomPoint()
+    context.fillStyle='#f0f'
+    context.fillRect( randomPoint.x - 10, randomPoint.y - 10, 20, 20 )
     context.restore()
 
   }
