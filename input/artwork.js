@@ -1,4 +1,5 @@
 const canvasSketch = require( 'canvas-sketch' )
+const { random } = require( 'canvas-sketch-util' )
 
 const Vector = require( './Vector' )
 const Rectangle = require( './Rectangle' )
@@ -38,8 +39,8 @@ const sketch = () => {
     /* --- */
 
     const COUNT = 30000
-    const RADIUS = width * 0.0015
-    const MAX_ATTEMPTS = COUNT
+    const RADIUS = width * 0.002
+    const MAX_ATTEMPTS = COUNT * 2
 
     let currentCount = 1
     let failedAttempts = 0
@@ -48,7 +49,16 @@ const sketch = () => {
 
     do {
 
-      const newPoint = Vector( width * 0.1 + 0.8 * width * Math.random(), height * 0.1 + 0.8 * height * Math.random() )
+      const newPoint = Vector(
+        /* width * 0.1 + 0.8 *  */width * random.value(),
+        /* height * 0.1 + 0.8 *  */height * random.value()
+      )
+
+      newPoint.x += random.noise2D( newPoint.x, newPoint.y, 0.0022 ) * width * 0.08
+      newPoint.y += random.noise2D( newPoint.x, newPoint.y, 0.0018 ) * height * 0.07
+
+      if ( !Rectangle( width * 0.1, height * 0.1, width * 0.8, height * 0.8 ).contains( newPoint ) ) continue
+
       const queryRange = Rectangle( newPoint.x - RADIUS * 2, newPoint.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
 
       // context.save()
@@ -82,9 +92,15 @@ const sketch = () => {
     for ( let i = 0; i < allPoints.length; i++ ) {
       const point = allPoints[ i ]
       context.save()
-      context.fillStyle = 'blue'
-      context.globalAlpha = 0.5
-      context.globalCompositeOperation = 'multiply'
+      context.fillStyle = `rgb(${
+        Math.round( 255 * ( random.noise2D( point.x, point.y, 0.0006 ) * 0.5 + 0.5 ) )
+      }, ${
+        Math.round( 255 * ( random.noise2D( point.x, point.y, 0.0003 ) * 0.5 + 0.5 ) )
+      }, ${
+        Math.round( 255 * ( 1 - ( random.noise2D( point.x, point.y, 0.0004 ) * 0.5 + 0.5 ) ) )
+      })`
+      // context.globalAlpha = 0.5
+      // context.globalCompositeOperation = 'multiply'
       drawCircle( context, point.x, point.y, RADIUS )
       context.fill()
       context.restore()
