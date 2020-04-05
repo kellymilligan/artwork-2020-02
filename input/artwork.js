@@ -93,11 +93,11 @@ const sketch = () => {
       const point = allPoints[ i ]
       context.save()
       context.fillStyle = `rgb(${
-        Math.round( 255 * ( random.noise2D( point.x, point.y, 0.0006 ) * 0.5 + 0.5 ) )
+        Math.round( 50 + 150 * ( random.noise2D( point.x, point.y, 0.0006 ) * 0.5 + 0.5 ) )
       }, ${
-        Math.round( 255 * ( random.noise2D( point.x, point.y, 0.0003 ) * 0.5 + 0.5 ) )
+        Math.round( 50 * ( random.noise2D( point.x, point.y, 0.0003 ) * 0.5 + 0.5 ) )
       }, ${
-        Math.round( 255 * ( 1 - ( random.noise2D( point.x, point.y, 0.0004 ) * 0.5 + 0.5 ) ) )
+        Math.round( 100 + 155 * ( 1 - ( random.noise2D( point.x, point.y, 0.0004 ) * 0.5 + 0.5 ) ) )
       })`
       // context.globalAlpha = 0.5
       // context.globalCompositeOperation = 'multiply'
