@@ -38,8 +38,8 @@ const sketch = () => {
 
     /* --- */
 
-    const COUNT = 30000
-    const RADIUS = width * 0.002
+    const COUNT = 100000
+    const RADIUS = width * 0.0015
     const MAX_ATTEMPTS = COUNT * 2
 
     let currentCount = 1
@@ -54,7 +54,7 @@ const sketch = () => {
         /* height * 0.1 + 0.8 *  */height * random.value()
       )
 
-      newPoint.x += random.noise2D( newPoint.x, newPoint.y, 0.0022 ) * width * 0.08
+      newPoint.x += random.noise2D( newPoint.x, newPoint.y, 0.0042 ) * width * 0.08
       newPoint.y += random.noise2D( newPoint.x, newPoint.y, 0.0018 ) * height * 0.07
 
       if ( !Rectangle( width * 0.1, height * 0.1, width * 0.8, height * 0.8 ).contains( newPoint ) ) continue
