@@ -25,30 +25,16 @@ const Circle = ( x = 0, y = 0, radius = 1 ) => ({
         Math.abs( this.y - ( y + height / 2 ) ),
       )
 
-      if ( centerDistance.x > ( width / 2 + this.radius ) ) { return false }
-      if ( centerDistance.y > ( height / 2 + this.radius ) ) { return false }
+      if ( centerDistance.x > width / 2 + this.radius ) { return false }
+      if ( centerDistance.y > height / 2 + this.radius ) { return false }
 
-      if ( centerDistance.x <= ( width / 2 ) ) { return true }
-      if ( centerDistance.y <= ( height / 2 ) ) { return true }
+      if ( centerDistance.x <= width / 2 ) { return true }
+      if ( centerDistance.y <= height / 2 ) { return true }
 
-      return Math.pow( this.radius, 2 ) >=
+      return Math.pow( this.radius, 2 ) >= (
         Math.pow( centerDistance.x - width / 2, 2 ) +
         Math.pow( centerDistance.y - height / 2, 2 )
-
-      // const rectangleCenter = Vector( x + width / 2, y + height / 2 )
-
-      // const intersectsCorner =
-      //   this.contains( Vector( x, y ) ) ||                // left top
-      //   this.contains( Vector( x + width, y ) ) ||        // right top
-      //   this.contains( Vector( x, y + height ) ) ||       // left bottom
-      //   this.contains( Vector( x + width, y + height ) )  // right bottom
-
-      // const intersectsSide = !(
-      //   Math.abs( this.x - rectangleCenter.x ) >= width / 2 + this.radius ||
-      //   Math.abs( this.y - rectangleCenter.y ) >= height / 2 + this.radius
-      // )
-
-      // return intersectsCorner || intersectsSide
+      )
     }
   }
 })

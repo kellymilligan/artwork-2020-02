@@ -53,8 +53,8 @@ const sketch = () => {
     const circle = Circle( width * 0.5, height * 0.5, width * 0.1 )
     const circle2 = Circle( width * 0.65, height * 0.65, width * 0.15 )
 
-    const rectWidth = 0.9
-    const rectHeight = 0.1
+    const rectWidth = 0.32
+    const rectHeight = 0.4
     const rectangle = Rectangle(
       width * 0.1,
       // -rectWidth * width + width * ( 1 + rectWidth ) * playhead,
