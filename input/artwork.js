@@ -1,8 +1,10 @@
 const canvasSketch = require( 'canvas-sketch' )
 const { random } = require( 'canvas-sketch-util' )
+random.setSeed( 2 )
 
 const Vector = require( './Vector' )
 const Rectangle = require( './Rectangle' )
+const Circle = require( './Circle' )
 const Quadtree = require( './Quadtree' )
 
 /* Config */
@@ -59,7 +61,8 @@ const sketch = () => {
 
       if ( !Rectangle( width * 0.1, height * 0.1, width * 0.8, height * 0.8 ).contains( newPoint ) ) continue
 
-      const queryRange = Rectangle( newPoint.x - RADIUS * 2, newPoint.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
+      // const queryRange = Rectangle( newPoint.x - RADIUS * 2, newPoint.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
+      const queryRange = Circle( newPoint.x, newPoint.y, RADIUS * 2 )
 
       // context.save()
       // context.strokeStyle = 'red'
