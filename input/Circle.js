@@ -36,6 +36,8 @@ const Circle = ( x = 0, y = 0, radius = 1 ) => ({
         Math.pow( centerDistance.y - height / 2, 2 )
       )
     }
+
+    return false
   }
 })
 

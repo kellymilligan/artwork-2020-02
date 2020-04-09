@@ -77,6 +77,7 @@ const sketch = () => {
 
     // console.log( 'circles intersect:', circle.intersects( circle2 ) )
     const circIntersectsRect = circle.intersects( rectangle )
+    const rectIntersectsCirc = rectangle.intersects( circle )
     context.strokeStyle = circIntersectsRect ? '#0ff' : '#f0f'
     context.strokeRect( rectangle.x, rectangle.y, rectangle.width, rectangle.height )
 
