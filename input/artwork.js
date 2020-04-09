@@ -1,6 +1,6 @@
 const canvasSketch = require( 'canvas-sketch' )
 const { random } = require( 'canvas-sketch-util' )
-random.setSeed( 2 )
+random.setSeed( random.getRandomSeed() )
 
 const Vector = require( './Vector' )
 const Rectangle = require( './Rectangle' )
@@ -41,7 +41,7 @@ const sketch = () => {
     /* --- */
 
     const COUNT = 50000
-    const RADIUS = width * 0.001
+    const RADIUS = width * 0.0015
     const MAX_ATTEMPTS = COUNT * 2
 
     let currentCount = 1
@@ -62,7 +62,8 @@ const sketch = () => {
       if ( !Rectangle( width * 0.1, height * 0.1, width * 0.8, height * 0.8 ).contains( newPoint ) ) continue
 
       // const queryRange = Rectangle( newPoint.x - RADIUS * 2, newPoint.y - RADIUS * 2, RADIUS * 4, RADIUS * 4 )
-      const queryRange = Circle( newPoint.x, newPoint.y, RADIUS * 2 )
+      const density = random.noise2D( newPoint.y, newPoint.x, 0.0009 )
+      const queryRange = Circle( newPoint.x, newPoint.y, RADIUS * 2 + RADIUS * 6 * ( density * 0.5 + 0.5 ) )
 
       // context.save()
       // context.strokeStyle = 'red'
